@@ -1,0 +1,183 @@
+\hypertarget{lotbgraphique_8c}{}\section{lotbgraphique.\+c File Reference}
+\label{lotbgraphique_8c}\index{lotbgraphique.\+c@{lotbgraphique.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$math.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$sys/types.\+h$>$}\\*
+{\ttfamily \#include $<$sys/stat.\+h$>$}\\*
+{\ttfamily \#include $<$fcntl.\+h$>$}\\*
+{\ttfamily \#include $<$errno.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$time.\+h$>$}\\*
+{\ttfamily \#include $<$S\+D\+L/\+S\+D\+L.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}lotbgraphique.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{lotbgraphique_8c_a619c5847f1bf29deef0560ac376dd2de}{draw\+Rectangle} (S\+D\+L\+\_\+\+Surface $\ast$ecran, int px, int py, int size, int r, int g, int b)
+\begin{DoxyCompactList}\small\item\em dessiner un rectrangle de taille \char`\"{}size\char`\"{}dans la fenetre \end{DoxyCompactList}\item 
+void \hyperlink{lotbgraphique_8c_ab9d99d9c2c628afd6151650b5b814ced}{fill\+Screen} (S\+D\+L\+\_\+\+Surface $\ast$ecran, int r, int g, int b)
+\begin{DoxyCompactList}\small\item\em remplirer la fenetre avec une certaine couleur \end{DoxyCompactList}\item 
+S\+D\+L\+\_\+\+Surface $\ast$ \hyperlink{lotbgraphique_8c_a7bd68782fb11ee7130bf8c9f15e44aac}{initialiser} ()
+\begin{DoxyCompactList}\small\item\em initialiser la fenetre \end{DoxyCompactList}\item 
+void \hyperlink{lotbgraphique_8c_a9a7c3a9055b936aceb8c1e20d0b6d4ae}{events} (S\+D\+L\+\_\+\+Surface $\ast$ecran, \hyperlink{structmatrice}{matrice} m, int nbcoup)
+\begin{DoxyCompactList}\small\item\em le joueur joue jusqu\textquotesingle{}à ce qu\textquotesingle{}il quitte, gagne la partie ou épuise son nombre de coups. imprimer le grille dans la fenetre,On libère la mémoire allouée aux matrices. Le jeu et le nombre de coups sont affichés à chaque tour. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries auto\+Draw} =0\hypertarget{lotbgraphique_8c_a04eafc43bc762ad942fbdb62d7b62ed4}{}\label{lotbgraphique_8c_a04eafc43bc762ad942fbdb62d7b62ed4}
+
+\item 
+int {\bfseries B} \mbox{[}3\mbox{]} =\{0,0,255\}\hypertarget{lotbgraphique_8c_a2d1d40160580eea6a2b1a4c55d258a30}{}\label{lotbgraphique_8c_a2d1d40160580eea6a2b1a4c55d258a30}
+
+\item 
+int {\bfseries V} \mbox{[}3\mbox{]} =\{0,255,0\}\hypertarget{lotbgraphique_8c_ad2e0947b90736daff657b1ad021f424d}{}\label{lotbgraphique_8c_ad2e0947b90736daff657b1ad021f424d}
+
+\item 
+int {\bfseries R} \mbox{[}3\mbox{]} =\{255,0,0\}\hypertarget{lotbgraphique_8c_a9531067e2e2c1f3a0551fa3bba1d93d3}{}\label{lotbgraphique_8c_a9531067e2e2c1f3a0551fa3bba1d93d3}
+
+\item 
+int {\bfseries J} \mbox{[}3\mbox{]} =\{255,255,0\}\hypertarget{lotbgraphique_8c_a8c0ba7dfb904047f147513650b5de818}{}\label{lotbgraphique_8c_a8c0ba7dfb904047f147513650b5de818}
+
+\item 
+int {\bfseries M} \mbox{[}3\mbox{]} =\{255,0,255\}\hypertarget{lotbgraphique_8c_ae5d725ec70ffbba09f87b8752fc010a5}{}\label{lotbgraphique_8c_ae5d725ec70ffbba09f87b8752fc010a5}
+
+\item 
+int {\bfseries G} \mbox{[}3\mbox{]} =\{130,130,130\}\hypertarget{lotbgraphique_8c_ac9702b306d1e7f4d9dace34433e1b213}{}\label{lotbgraphique_8c_ac9702b306d1e7f4d9dace34433e1b213}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Julian Le Couster, Emmanuel-\/\+Paul Vincent, Xuehui Jia, Amina Zeghida 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\index{lotbgraphique.\+c@{lotbgraphique.\+c}!draw\+Rectangle@{draw\+Rectangle}}
+\index{draw\+Rectangle@{draw\+Rectangle}!lotbgraphique.\+c@{lotbgraphique.\+c}}
+\subsubsection[{\texorpdfstring{draw\+Rectangle(\+S\+D\+L\+\_\+\+Surface $\ast$ecran, int px, int py, int size, int r, int g, int b)}{drawRectangle(SDL_Surface *ecran, int px, int py, int size, int r, int g, int b)}}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+Rectangle (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Surface $\ast$}]{ecran, }
+\item[{int}]{px, }
+\item[{int}]{py, }
+\item[{int}]{size, }
+\item[{int}]{r, }
+\item[{int}]{g, }
+\item[{int}]{b}
+\end{DoxyParamCaption}
+)}\hypertarget{lotbgraphique_8c_a619c5847f1bf29deef0560ac376dd2de}{}\label{lotbgraphique_8c_a619c5847f1bf29deef0560ac376dd2de}
+
+
+dessiner un rectrangle de taille \char`\"{}size\char`\"{}dans la fenetre 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ecran\+:ecran} & initialisé \\
+\hline
+{\em px\+:l\textquotesingle{}abscisse} & de la debut de rectangle \\
+\hline
+{\em px\+:l\textquotesingle{}ordonnée} & de la debut de rectangle \\
+\hline
+{\em size} & taille de rectangle \\
+\hline
+{\em r} & valeur du Rouge dans la code R\+GB qui indique la couleur \\
+\hline
+{\em g} & valeur du Vert dans la code R\+GB qui indique la couleur \\
+\hline
+{\em b} & valeur du Bleu dans la code R\+GB qui indique la couleur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+Definition at line 47 of file lotbgraphique.\+c.
+
+\index{lotbgraphique.\+c@{lotbgraphique.\+c}!events@{events}}
+\index{events@{events}!lotbgraphique.\+c@{lotbgraphique.\+c}}
+\subsubsection[{\texorpdfstring{events(\+S\+D\+L\+\_\+\+Surface $\ast$ecran, matrice m, int nbcoup)}{events(SDL_Surface *ecran, matrice m, int nbcoup)}}]{\setlength{\rightskip}{0pt plus 5cm}void events (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Surface $\ast$}]{ecran, }
+\item[{{\bf matrice}}]{m, }
+\item[{int}]{nbcoup}
+\end{DoxyParamCaption}
+)}\hypertarget{lotbgraphique_8c_a9a7c3a9055b936aceb8c1e20d0b6d4ae}{}\label{lotbgraphique_8c_a9a7c3a9055b936aceb8c1e20d0b6d4ae}
+
+
+le joueur joue jusqu\textquotesingle{}à ce qu\textquotesingle{}il quitte, gagne la partie ou épuise son nombre de coups. imprimer le grille dans la fenetre,On libère la mémoire allouée aux matrices. Le jeu et le nombre de coups sont affichés à chaque tour. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ecran} & \+: ecran initialisé \\
+\hline
+{\em m} & \+: tableau représentant le tableau d\textquotesingle{}une matrice (le jeu) \\
+\hline
+{\em nbcoup} & \+: entier correspondant au nombre de coups souhaitée par le joueur et qui est décrémenté lors du jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ecran \+: none 
+\end{DoxyReturn}
+
+
+Definition at line 120 of file lotbgraphique.\+c.
+
+\index{lotbgraphique.\+c@{lotbgraphique.\+c}!fill\+Screen@{fill\+Screen}}
+\index{fill\+Screen@{fill\+Screen}!lotbgraphique.\+c@{lotbgraphique.\+c}}
+\subsubsection[{\texorpdfstring{fill\+Screen(\+S\+D\+L\+\_\+\+Surface $\ast$ecran, int r, int g, int b)}{fillScreen(SDL_Surface *ecran, int r, int g, int b)}}]{\setlength{\rightskip}{0pt plus 5cm}void fill\+Screen (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Surface $\ast$}]{ecran, }
+\item[{int}]{r, }
+\item[{int}]{g, }
+\item[{int}]{b}
+\end{DoxyParamCaption}
+)}\hypertarget{lotbgraphique_8c_ab9d99d9c2c628afd6151650b5b814ced}{}\label{lotbgraphique_8c_ab9d99d9c2c628afd6151650b5b814ced}
+
+
+remplirer la fenetre avec une certaine couleur 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ecran\+:ecran} & initialisé \\
+\hline
+{\em r} & valeur du Rouge dans la code R\+GB qui indique la couleur \\
+\hline
+{\em g} & valeur du Vert dans la code R\+GB qui indique la couleur \\
+\hline
+{\em b} & valeur du Bleu dans la code R\+GB qui indique la couleur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+Definition at line 69 of file lotbgraphique.\+c.
+
+\index{lotbgraphique.\+c@{lotbgraphique.\+c}!initialiser@{initialiser}}
+\index{initialiser@{initialiser}!lotbgraphique.\+c@{lotbgraphique.\+c}}
+\subsubsection[{\texorpdfstring{initialiser()}{initialiser()}}]{\setlength{\rightskip}{0pt plus 5cm}S\+D\+L\+\_\+\+Surface $\ast$ initialiser (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{lotbgraphique_8c_a7bd68782fb11ee7130bf8c9f15e44aac}{}\label{lotbgraphique_8c_a7bd68782fb11ee7130bf8c9f15e44aac}
+
+
+initialiser la fenetre 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ecran \+: ecran initialisé 
+\end{DoxyReturn}
+
+
+Definition at line 84 of file lotbgraphique.\+c.
+

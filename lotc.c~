@@ -1,0 +1,111 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+#include "lotc.h"
+
+int estVide(pile l){
+  return NULL == l;
+}
+
+int estDans(pile l,int i){
+  int a=0;
+  while(!estVide(l) && a!=5){
+    if(l->val == i){
+      return 1;
+    }
+    l=l->next;
+    a++;
+  }
+  return 0;
+}
+
+int egale(matrice a, matrice b){
+  int i,j;
+  for(j=0;j<a.size;j++){
+    for(i=0;i<a.size;i++){
+      if(a.tab[j][i] != b.tab[j][i]){
+	return 0;
+      }
+    }
+  }
+  return 1;
+}
+      
+pile empiler(pile l, int i){
+  pile p = (pile) malloc(sizeof(struct maillon));
+  p->val=i;
+  p->next = l;
+  return p;
+}
+
+void depiler(pile *l){
+  (*l)=(*l)->next;
+}
+
+int longueur(pile p){
+  int i=0;
+  while(!estVide(p)){
+    p=p->next;
+    i++;
+  }
+  return i;
+}
+
+void uneSolutionTrouvee(pile solution){
+  printf("Une solution : ");
+  char a;
+  while(!estVide(solution)){
+    a = solution->val;
+    printf("%c ",itoc(a));
+    depiler(&solution);
+  }
+  printf("\n");
+}
+int profondeurmax = INT_MAX;
+void solveur(matrice m, matrice id, pile solution, int profondeur){
+  if(profondeur < profondeurmax){
+  int i,j,k;
+  matrice m2= allocation(m.size);
+  matrice id2= allocation(id.size);
+  for(i=1;i<7;i++){
+    /*if(!estDans(solution,i)){*/
+         
+   
+      solution = empiler(solution,i);
+   
+      for(k=0;k<m.size;k++){
+	for(j=0;j<m.size;j++){
+	  id2.tab[k][j]=id.tab[k][j];
+	  m2.tab[k][j]=m.tab[k][j];
+	}
+      }
+
+      changement(m2,id2,i);
+          
+      identification(m2.tab,id2.tab,0,0,m.size);
+      if(!egale(id,id2)){ //on vérifie que le coup a modifié quelque chose, sinon il ne sert à rien
+	if(presence(id2)){
+	  profondeurmax=longueur(solution);
+	  uneSolutionTrouvee(solution);
+	  
+	}
+	else{
+	  /*i++;
+	    if(i==7){
+	    i=1;}*/
+	  
+	    solveur(m2,id2,solution,profondeur+1);
+	  
+	}
+      }
+      depiler(&solution);
+      /*}*/
+  }
+  free1(m2.tab,m2.size);
+  free1(id2.tab,id2.size);
+  }
+}
+
+
+
+
