@@ -8,15 +8,20 @@ lota.o : lota.c lota.h
 lotb.o : lotb.c lotb.h lota.h
 	gcc -c $(CFLAGS) lotb.c
 
-lotc.o : lotc.c lotc.h lotb.h
-	gcc -c $(CFLAGS) lotc.c
+lotbgraphique.o : lotbgraphique.c lotbgraphique.h lotb.h
+	gcc -c  $(CFLAGS) lotbgraphique.c -lSDL	-lSDL_ttf
 
-main.o : main.c lota.h lotb.h lotc.h
-	gcc -c $(CFLAGS) main.c 
+lotc.o : lotc.c lotc.h lotbgraphique.h
+	gcc -c $(CFLAGS) lotc.c -lSDL -lSDL_ttf
 
-cfv1 : main.o lota.o lotb.o lotc.o
-	gcc -o cfv1 main.o lota.o lotb.o lotc.o 
+lotd.o : lotd.c lotd.h lotc.h
+	gcc -c $(CFLAGS) lotd.c
 
+main.o : main.c lota.h lotb.h lotbgraphique.h lotc.h lotd.h
+	gcc -c $(CFLAGS) main.c -lSDL -lSDL_ttf
+
+cfv1 : main.o lota.o lotb.o lotbgraphique.o lotc.o lotd.o
+	gcc -o cfv1 main.o lota.o lotb.o lotbgraphique.o lotc.o lotd.o -lSDL -lSDL_ttf
 
 doc :
 	doxygen -g 

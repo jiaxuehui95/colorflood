@@ -121,7 +121,8 @@ $(document).ready(function(){initNavTree('lotbgraphique_8c.html','');});
 <code>#include &lt;unistd.h&gt;</code><br />
 <code>#include &lt;time.h&gt;</code><br />
 <code>#include &lt;SDL/SDL.h&gt;</code><br />
-<code>#include &quot;lotbgraphique.h&quot;</code><br />
+<code>#include &lt;SDL/SDL_ttf.h&gt;</code><br />
+<code>#include &quot;lotd.h&quot;</code><br />
 </div>
 <p><a href="lotbgraphique_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -136,9 +137,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a7bd68782fb11ee7130bf8c9f15e44aac"><td class="memItemLeft" align="right" valign="top">SDL_Surface *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lotbgraphique_8c.html#a7bd68782fb11ee7130bf8c9f15e44aac">initialiser</a> ()</td></tr>
 <tr class="memdesc:a7bd68782fb11ee7130bf8c9f15e44aac"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialiser la fenetre  <a href="#a7bd68782fb11ee7130bf8c9f15e44aac">More...</a><br /></td></tr>
 <tr class="separator:a7bd68782fb11ee7130bf8c9f15e44aac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a7c3a9055b936aceb8c1e20d0b6d4ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lotbgraphique_8c.html#a9a7c3a9055b936aceb8c1e20d0b6d4ae">events</a> (SDL_Surface *ecran, <a class="el" href="structmatrice.html">matrice</a> m, int nbcoup)</td></tr>
-<tr class="memdesc:a9a7c3a9055b936aceb8c1e20d0b6d4ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">le joueur joue jusqu'à ce qu'il quitte, gagne la partie ou épuise son nombre de coups. imprimer le grille dans la fenetre,On libère la mémoire allouée aux matrices. Le jeu et le nombre de coups sont affichés à chaque tour.  <a href="#a9a7c3a9055b936aceb8c1e20d0b6d4ae">More...</a><br /></td></tr>
-<tr class="separator:a9a7c3a9055b936aceb8c1e20d0b6d4ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e253a1f4f0c7f979c50658fea43e9ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lotbgraphique_8c.html#a4e253a1f4f0c7f979c50658fea43e9ca">events</a> (SDL_Surface *ecran, <a class="el" href="structmatrice.html">matrice</a> m, int nbcoup, int choix)</td></tr>
+<tr class="memdesc:a4e253a1f4f0c7f979c50658fea43e9ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">le joueur joue jusqu'à ce qu'il quitte, gagne la partie ou épuise son nombre de coups. imprimer le grille dans la fenetre,On libère la mémoire allouée aux matrices. Le jeu et le nombre de coups sont affichés à chaque tour.  <a href="#a4e253a1f4f0c7f979c50658fea43e9ca">More...</a><br /></td></tr>
+<tr class="separator:a4e253a1f4f0c7f979c50658fea43e9ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -163,6 +164,24 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>M</b> [3] ={255,0,255}
 <tr class="memitem:ac9702b306d1e7f4d9dace34433e1b213"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac9702b306d1e7f4d9dace34433e1b213"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>G</b> [3] ={130,130,130}</td></tr>
 <tr class="separator:ac9702b306d1e7f4d9dace34433e1b213"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c8c3102d21fd30e2488af144d5aea63"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1c8c3102d21fd30e2488af144d5aea63"></a>
+SDL_Color&#160;</td><td class="memItemRight" valign="bottom"><b>couleurNoire</b> = {0, 0, 0}</td></tr>
+<tr class="separator:a1c8c3102d21fd30e2488af144d5aea63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8caaaae1515525bed939b86abd35e5c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8caaaae1515525bed939b86abd35e5c1"></a>
+SDL_Color&#160;</td><td class="memItemRight" valign="bottom"><b>couleurBlanche</b> = {255, 255, 255}</td></tr>
+<tr class="separator:a8caaaae1515525bed939b86abd35e5c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69ad8dfb2d439a28bef2a619bf6e4792"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a69ad8dfb2d439a28bef2a619bf6e4792"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><b>nbcoups_txt</b> [50] = &quot;&quot;</td></tr>
+<tr class="separator:a69ad8dfb2d439a28bef2a619bf6e4792"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b66158197948c551bbf808da9f95726"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b66158197948c551bbf808da9f95726"></a>
+SDL_Surface *&#160;</td><td class="memItemRight" valign="bottom"><b>texte</b> = NULL</td></tr>
+<tr class="separator:a5b66158197948c551bbf808da9f95726"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac06cf6a292dc0e70e28b394fa481aef2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac06cf6a292dc0e70e28b394fa481aef2"></a>
+SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>position</b></td></tr>
+<tr class="separator:ac06cf6a292dc0e70e28b394fa481aef2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49a11b0728728090fa1189391c9fe0c8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a49a11b0728728090fa1189391c9fe0c8"></a>
+TTF_Font *&#160;</td><td class="memItemRight" valign="bottom"><b>police</b> = NULL</td></tr>
+<tr class="separator:a49a11b0728728090fa1189391c9fe0c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Julian Le Couster, Emmanuel-Paul Vincent, Xuehui Jia, Amina Zeghida </dd></dl>
@@ -238,11 +257,11 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>G</b> [3] ={130,130,13
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>none </dd></dl>
 
-<p>Definition at line <a class="el" href="lotbgraphique_8c_source.html#l00047">47</a> of file <a class="el" href="lotbgraphique_8c_source.html">lotbgraphique.c</a>.</p>
+<p>Definition at line <a class="el" href="lotbgraphique_8c_source.html#l00052">52</a> of file <a class="el" href="lotbgraphique_8c_source.html">lotbgraphique.c</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a9a7c3a9055b936aceb8c1e20d0b6d4ae"></a>
+<a class="anchor" id="a4e253a1f4f0c7f979c50658fea43e9ca"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -262,7 +281,13 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>G</b> [3] ={130,130,13
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>nbcoup</em>&#160;</td>
+          <td class="paramname"><em>nbcoup</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>choix</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -278,12 +303,13 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>G</b> [3] ={130,130,13
     <tr><td class="paramname">ecran</td><td>: ecran initialisé </td></tr>
     <tr><td class="paramname">m</td><td>: tableau représentant le tableau d'une matrice (le jeu) </td></tr>
     <tr><td class="paramname">nbcoup</td><td>: entier correspondant au nombre de coups souhaitée par le joueur et qui est décrémenté lors du jeu </td></tr>
+    <tr><td class="paramname">choix</td><td>: entier correspondant au choix du solveur </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>ecran : none </dd></dl>
 
-<p>Definition at line <a class="el" href="lotbgraphique_8c_source.html#l00120">120</a> of file <a class="el" href="lotbgraphique_8c_source.html">lotbgraphique.c</a>.</p>
+<p>Definition at line <a class="el" href="lotbgraphique_8c_source.html#l00137">137</a> of file <a class="el" href="lotbgraphique_8c_source.html">lotbgraphique.c</a>.</p>
 
 </div>
 </div>
@@ -335,7 +361,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>G</b> [3] ={130,130,13
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>none </dd></dl>
 
-<p>Definition at line <a class="el" href="lotbgraphique_8c_source.html#l00069">69</a> of file <a class="el" href="lotbgraphique_8c_source.html">lotbgraphique.c</a>.</p>
+<p>Definition at line <a class="el" href="lotbgraphique_8c_source.html#l00074">74</a> of file <a class="el" href="lotbgraphique_8c_source.html">lotbgraphique.c</a>.</p>
 
 </div>
 </div>
@@ -361,7 +387,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>G</b> [3] ={130,130,13
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>ecran : ecran initialisé </dd></dl>
 
-<p>Definition at line <a class="el" href="lotbgraphique_8c_source.html#l00084">84</a> of file <a class="el" href="lotbgraphique_8c_source.html">lotbgraphique.c</a>.</p>
+<p>Definition at line <a class="el" href="lotbgraphique_8c_source.html#l00089">89</a> of file <a class="el" href="lotbgraphique_8c_source.html">lotbgraphique.c</a>.</p>
 
 </div>
 </div>

@@ -1,9 +1,9 @@
-/*#include <SDL/SDL.h>
 #include <SDL/SDL.h>
-*/
+#include <SDL/SDL.h>
+#include <SDL/SDL_ttf.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "lotc.h"
+#include "lotd.h"
 
 /**
 \file main.c
@@ -12,22 +12,25 @@
 */
 
 int main(){
-  /*  SDL_Surface *ecran ;*/
-    /*  SDL_Surface *ima=NULL;
-     */ 
+  SDL_Surface *ecran ;
   presentation();
-  int size,nbcoup;
-  char typeinitialisation,typejeu;
-  lectureinit(&size,&nbcoup,&typeinitialisation,&typejeu);
-  matrice  m=allocation(size);
-  
+  int size,nbcoup,choix;
+  char typeinitialisation,typejeu,solveur;
+  lectureinit(&size,&nbcoup,&typeinitialisation,&typejeu,&solveur);
+  matrice  m=allocation(size);  
   choixinitialisation(typeinitialisation,m);
-  /*if(typejeu == 'y'){
-   ecran=initialiser();
-    events(ecran,m,nbcoup);
+  if(solveur == 'y'){
+    choix=choixsolveur();    
   }
-  else{*/
-  jeu(m,nbcoup);
-    /*}*/
+  else{
+    choix = 0;
+  }
+  if(typejeu == 'y'){
+    ecran=initialiser();
+    events(ecran,m,nbcoup,choix);
+  }
+  else{
+    jeu(m,nbcoup,choix);
+  }
   return 0;
 }

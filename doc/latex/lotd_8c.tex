@@ -1,0 +1,154 @@
+\hypertarget{lotd_8c}{}\section{lotd.\+c File Reference}
+\label{lotd_8c}\index{lotd.\+c@{lotd.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}lotd.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{lotd_8c_a9203601396087c8ad2383e4644f8a0e1}{couleur} (\hyperlink{structmatrice}{matrice} m, \hyperlink{structmatrice}{matrice} id, int $\ast$tab)
+\begin{DoxyCompactList}\small\item\em permet de déterminer le nombre d\textquotesingle{}apparitions de chaque couleur autour de la tache \end{DoxyCompactList}\item 
+int \hyperlink{lotd_8c_a989af83af4844fd996f94617cdaf6571}{maxcouleur} (int $\ast$tab)
+\begin{DoxyCompactList}\small\item\em permet de retourner l\textquotesingle{}emplacement dans le tableau de la couleur qui apparait le plus autour de la tache \end{DoxyCompactList}\item 
+void \hyperlink{lotd_8c_adc303863e572a15c879d3a1a292b46df}{remiseazero} (int $\ast$tab)
+\begin{DoxyCompactList}\small\item\em permet de réinitialiser à 0 toutes les cases du tableau \end{DoxyCompactList}\item 
+int \hyperlink{lotd_8c_a19946fd8a29cf2f2e080f3488cba4637}{solveuraleatoire} (\hyperlink{structmatrice}{matrice} m2, \hyperlink{structmatrice}{matrice} id2, \hyperlink{structmaillon}{pile} solution)
+\begin{DoxyCompactList}\small\item\em permet de trouver une solution en fonction du nombre d\textquotesingle{}apparition de chaque couleur autour de la tâche du jeu \end{DoxyCompactList}\item 
+int \hyperlink{lotd_8c_a2c37318685040c2dd78d575736d3f37d}{choixsolveur} ()
+\begin{DoxyCompactList}\small\item\em permet de demander à l\textquotesingle{}utilisateur le type de solveur qu\textquotesingle{}il souhaite utiliser \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Julian Le Couster, Emmanuel-\/\+Paul Vincent, Xuehui Jia, Amina Zeghida 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\index{lotd.\+c@{lotd.\+c}!choixsolveur@{choixsolveur}}
+\index{choixsolveur@{choixsolveur}!lotd.\+c@{lotd.\+c}}
+\subsubsection[{\texorpdfstring{choixsolveur()}{choixsolveur()}}]{\setlength{\rightskip}{0pt plus 5cm}int choixsolveur (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{lotd_8c_a2c37318685040c2dd78d575736d3f37d}{}\label{lotd_8c_a2c37318685040c2dd78d575736d3f37d}
+
+
+permet de demander à l\textquotesingle{}utilisateur le type de solveur qu\textquotesingle{}il souhaite utiliser 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & none \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+un entier correspondant au type de solveur (1 pour aléatoire et 2 pour la meilleure solution) 
+\end{DoxyReturn}
+
+
+Definition at line 106 of file lotd.\+c.
+
+\index{lotd.\+c@{lotd.\+c}!couleur@{couleur}}
+\index{couleur@{couleur}!lotd.\+c@{lotd.\+c}}
+\subsubsection[{\texorpdfstring{couleur(matrice m, matrice id, int $\ast$tab)}{couleur(matrice m, matrice id, int *tab)}}]{\setlength{\rightskip}{0pt plus 5cm}void couleur (
+\begin{DoxyParamCaption}
+\item[{{\bf matrice}}]{m, }
+\item[{{\bf matrice}}]{id, }
+\item[{int $\ast$}]{tab}
+\end{DoxyParamCaption}
+)}\hypertarget{lotd_8c_a9203601396087c8ad2383e4644f8a0e1}{}\label{lotd_8c_a9203601396087c8ad2383e4644f8a0e1}
+
+
+permet de déterminer le nombre d\textquotesingle{}apparitions de chaque couleur autour de la tache 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & \+: matrice valide \\
+\hline
+{\em id} & \+: matrice valide \\
+\hline
+{\em tab} & \+: tableau d\textquotesingle{}entiers,valide \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+Definition at line 19 of file lotd.\+c.
+
+\index{lotd.\+c@{lotd.\+c}!maxcouleur@{maxcouleur}}
+\index{maxcouleur@{maxcouleur}!lotd.\+c@{lotd.\+c}}
+\subsubsection[{\texorpdfstring{maxcouleur(int $\ast$tab)}{maxcouleur(int *tab)}}]{\setlength{\rightskip}{0pt plus 5cm}int maxcouleur (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{tab}
+\end{DoxyParamCaption}
+)}\hypertarget{lotd_8c_a989af83af4844fd996f94617cdaf6571}{}\label{lotd_8c_a989af83af4844fd996f94617cdaf6571}
+
+
+permet de retourner l\textquotesingle{}emplacement dans le tableau de la couleur qui apparait le plus autour de la tache 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tab} & \+: tableau d\textquotesingle{}entiers, valide \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+un entier correspondant à l\textquotesingle{}indice de l\textquotesingle{}élément maximum du tableau 
+\end{DoxyReturn}
+
+
+Definition at line 36 of file lotd.\+c.
+
+\index{lotd.\+c@{lotd.\+c}!remiseazero@{remiseazero}}
+\index{remiseazero@{remiseazero}!lotd.\+c@{lotd.\+c}}
+\subsubsection[{\texorpdfstring{remiseazero(int $\ast$tab)}{remiseazero(int *tab)}}]{\setlength{\rightskip}{0pt plus 5cm}void remiseazero (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{tab}
+\end{DoxyParamCaption}
+)}\hypertarget{lotd_8c_adc303863e572a15c879d3a1a292b46df}{}\label{lotd_8c_adc303863e572a15c879d3a1a292b46df}
+
+
+permet de réinitialiser à 0 toutes les cases du tableau 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tab} & \+: tableau d\textquotesingle{}entiers, valide \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+Definition at line 52 of file lotd.\+c.
+
+\index{lotd.\+c@{lotd.\+c}!solveuraleatoire@{solveuraleatoire}}
+\index{solveuraleatoire@{solveuraleatoire}!lotd.\+c@{lotd.\+c}}
+\subsubsection[{\texorpdfstring{solveuraleatoire(matrice m2, matrice id2, pile solution)}{solveuraleatoire(matrice m2, matrice id2, pile solution)}}]{\setlength{\rightskip}{0pt plus 5cm}void solveuraleatoire (
+\begin{DoxyParamCaption}
+\item[{{\bf matrice}}]{m2, }
+\item[{{\bf matrice}}]{id2, }
+\item[{{\bf pile}}]{solution}
+\end{DoxyParamCaption}
+)}\hypertarget{lotd_8c_a19946fd8a29cf2f2e080f3488cba4637}{}\label{lotd_8c_a19946fd8a29cf2f2e080f3488cba4637}
+
+
+permet de trouver une solution en fonction du nombre d\textquotesingle{}apparition de chaque couleur autour de la tâche du jeu 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m2} & \+: matrice valide \\
+\hline
+{\em id2} & \+: matrice valide \\
+\hline
+{\em solution} & \+: pile valide \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+un entier \+: la longueur de la solution 
+\end{DoxyReturn}
+
+
+Definition at line 67 of file lotd.\+c.
+

@@ -1,4 +1,4 @@
-#include "lotb.h"
+#include "lotbgraphique.h"
 
 typedef struct maillon* pile;
 
@@ -13,9 +13,11 @@ pile empiler(pile l, int i);
 
 void depiler(pile *l);
 
+int longueur(pile p);
+
 void uneSolutionTrouvee(pile solution);
 
-void solveur(matrice m, matrice id, pile solution, int profondeur);
+int solveur(matrice m, matrice id, pile solution, int profondeur);
 
 
 

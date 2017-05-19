@@ -74,14 +74,16 @@ pile empiler(pile l, int i){
 
 /**
    \fn void depiler(pile *l)
-   \brief permet de depiler l'élément au sommet de la pile
+   \brief permet de depiler l'élément au sommet de la pile et de libérer la mémoire de l'ancien élément au sommet
    \param *l : un pointeur vers une pile, valide
    \return none 
 */
 void depiler(pile *l){
+  pile p;
+  p=*l;
   (*l)=(*l)->next;
+  free(p);
 }
-
 
 /**
    \fn int longueur(pile p)
@@ -105,12 +107,13 @@ int longueur(pile p){
    \return none
 */
 void uneSolutionTrouvee(pile solution){
-  printf("Une solution : ");
+  printf("Une solution : (attention se lit de droite à gauche) \n");
   char a;
   while(!estVide(solution)){
     a = solution->val;
     printf("%c ",itoc(a));
-    depiler(&solution);
+    
+    solution=solution->next;
   }
   printf("\n");
 }
@@ -118,7 +121,7 @@ void uneSolutionTrouvee(pile solution){
 int profondeurmax = INT_MAX;
 
 /**
-   \fn void solveur(matrice m, matrice id, pile solution, int profondeur)
+   \fn int solveur(matrice m, matrice id, pile solution, int profondeur)
    \brief permet d'afficher toutes les solutions du jeu à condition qu'elles soient meilleures que les précédentes solutions trouvées
    \param m : matrice valide
    \param id : matrice valide
@@ -126,15 +129,12 @@ int profondeurmax = INT_MAX;
    \param profondeur : entier
    \return none
 */
-void solveur(matrice m, matrice id, pile solution, int profondeur){
-  if(profondeur+1 < profondeurmax){
+int solveur(matrice m, matrice id, pile solution, int profondeur){
+   if(profondeur+1 < profondeurmax){
   int i,j,k;
   matrice m2= allocation(m.size);
   matrice id2= allocation(id.size);
-  for(i=1;i<7;i++){
-    /*if(!estDans(solution,i)){*/
-         
-   
+  for(i=1;i<7;i++){   
       solution = empiler(solution,i);
    
       for(k=0;k<m.size;k++){
@@ -153,21 +153,17 @@ void solveur(matrice m, matrice id, pile solution, int profondeur){
 	  uneSolutionTrouvee(solution);
 	  
 	}
-	else{
-	  /*i++;
-	    if(i==7){
-	    i=1;}*/
-	  
+	else{	  
 	    solveur(m2,id2,solution,profondeur+1);
-	  
 	}
       }
       depiler(&solution);
-      /*}*/
+      
   }
   free1(m2.tab,m2.size);
   free1(id2.tab,id2.size);
-  }
+    }
+   return profondeurmax;
 }
 
 

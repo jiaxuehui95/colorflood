@@ -111,15 +111,15 @@ $(document).ready(function(){initNavTree('lotb_8c.html','');});
 <div class="contents">
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
-<code>#include &quot;lotb.h&quot;</code><br />
+<code>#include &quot;lotd.h&quot;</code><br />
 </div>
 <p><a href="lotb_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a144c514f678302d01efb05b8633e44f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lotb_8c.html#a144c514f678302d01efb05b8633e44f3">lectureinit</a> (int *m, int *nbcoup, char *typeinitialisation, char *typejeu)</td></tr>
-<tr class="memdesc:a144c514f678302d01efb05b8633e44f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">récupère la taille souhaitée par l'utilisateur, le nombre de coup et le type d'initialisation qu'il souhaite  <a href="#a144c514f678302d01efb05b8633e44f3">More...</a><br /></td></tr>
-<tr class="separator:a144c514f678302d01efb05b8633e44f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1517f6f20930981fd4e5cb03db04ab54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lotb_8c.html#a1517f6f20930981fd4e5cb03db04ab54">lectureinit</a> (int *m, int *nbcoup, char *typeinitialisation, char *typejeu, char *<a class="el" href="lotc_8c.html#a8333e88f661c694ca260c7b5f5983c29">solveur</a>)</td></tr>
+<tr class="memdesc:a1517f6f20930981fd4e5cb03db04ab54"><td class="mdescLeft">&#160;</td><td class="mdescRight">récupère la taille souhaitée par l'utilisateur, le nombre de coup et le type d'initialisation qu'il souhaite  <a href="#a1517f6f20930981fd4e5cb03db04ab54">More...</a><br /></td></tr>
+<tr class="separator:a1517f6f20930981fd4e5cb03db04ab54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04bf46036b57df3e0e41a3fb0f3cf10f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lotb_8c.html#a04bf46036b57df3e0e41a3fb0f3cf10f">choixinitialisation</a> (char i, <a class="el" href="structmatrice.html">matrice</a> m)</td></tr>
 <tr class="memdesc:a04bf46036b57df3e0e41a3fb0f3cf10f"><td class="mdescLeft">&#160;</td><td class="mdescRight">permet d'initialiser la matrice en fonction du choix de l'utilisateur, soit à partir d'un fichier soit aléatoirement. On peut également choisir de stocker les valeurs en créant ou remplaçant un fichier.  <a href="#a04bf46036b57df3e0e41a3fb0f3cf10f">More...</a><br /></td></tr>
 <tr class="separator:a04bf46036b57df3e0e41a3fb0f3cf10f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -132,9 +132,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a449590c2be70df742108dc714bbcacca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lotb_8c.html#a449590c2be70df742108dc714bbcacca">selection</a> (int *c, int *nbcoup, int tache)</td></tr>
 <tr class="memdesc:a449590c2be70df742108dc714bbcacca"><td class="mdescLeft">&#160;</td><td class="mdescRight">permet de demander et de récupérer la valeur que l'utilisateur souhaite joueur. Si il souhaite quitter la partie il peut rentrer q. On diminue également le nombre de coups restants si il rentre une valeur valide.  <a href="#a449590c2be70df742108dc714bbcacca">More...</a><br /></td></tr>
 <tr class="separator:a449590c2be70df742108dc714bbcacca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac55c563e45f52fa195d1481d247e301c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lotb_8c.html#ac55c563e45f52fa195d1481d247e301c">jeu</a> (<a class="el" href="structmatrice.html">matrice</a> m, int nbcoup)</td></tr>
-<tr class="memdesc:ac55c563e45f52fa195d1481d247e301c"><td class="mdescLeft">&#160;</td><td class="mdescRight">permet au joueur de jouer. On alloue la mémoire de la matrice, on initialise la matrice d'identification, puis on joue tant que l'on n'a pas gagné ou épuisé le nombre de coups  <a href="#ac55c563e45f52fa195d1481d247e301c">More...</a><br /></td></tr>
-<tr class="separator:ac55c563e45f52fa195d1481d247e301c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac23a21f3a1f7aaa0b4d86c10f9c81adf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lotb_8c.html#ac23a21f3a1f7aaa0b4d86c10f9c81adf">jeu</a> (<a class="el" href="structmatrice.html">matrice</a> m, int nbcoup, int choix)</td></tr>
+<tr class="memdesc:ac23a21f3a1f7aaa0b4d86c10f9c81adf"><td class="mdescLeft">&#160;</td><td class="mdescRight">permet au joueur de jouer. On alloue la mémoire de la matrice, on initialise la matrice d'identification, puis on joue tant que l'on n'a pas gagné ou épuisé le nombre de coups  <a href="#ac23a21f3a1f7aaa0b4d86c10f9c81adf">More...</a><br /></td></tr>
+<tr class="separator:ac23a21f3a1f7aaa0b4d86c10f9c81adf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Julian Le Couster, Emmanuel-Paul Vincent, Xuehui Jia, Amina Zeghida </dd></dl>
@@ -164,7 +164,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>none (le fichier a été affichée) </dd></dl>
 
-<p>Definition at line <a class="el" href="lotb_8c_source.html#l00109">109</a> of file <a class="el" href="lotb_8c_source.html">lotb.c</a>.</p>
+<p>Definition at line <a class="el" href="lotb_8c_source.html#l00122">122</a> of file <a class="el" href="lotb_8c_source.html">lotb.c</a>.</p>
 
 </div>
 </div>
@@ -202,11 +202,11 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>none (la matrice est initialisée) </dd></dl>
 
-<p>Definition at line <a class="el" href="lotb_8c_source.html#l00079">79</a> of file <a class="el" href="lotb_8c_source.html">lotb.c</a>.</p>
+<p>Definition at line <a class="el" href="lotb_8c_source.html#l00092">92</a> of file <a class="el" href="lotb_8c_source.html">lotb.c</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ac55c563e45f52fa195d1481d247e301c"></a>
+<a class="anchor" id="ac23a21f3a1f7aaa0b4d86c10f9c81adf"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -220,7 +220,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>nbcoup</em>&#160;</td>
+          <td class="paramname"><em>nbcoup</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>choix</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -235,16 +241,17 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">m</td><td>: matrice valide </td></tr>
     <tr><td class="paramname">nbcoup</td><td>: entier correspondant au nombre de coups souhaitée par le joueur et qui est décrémenté lors du jeu </td></tr>
+    <tr><td class="paramname">choix</td><td>: entier qui détermine le choix pour le solveur </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>none (se termine lorsque la partie est terminée ou que le joueur souhaite quitter la partie) </dd></dl>
 
-<p>Definition at line <a class="el" href="lotb_8c_source.html#l00185">185</a> of file <a class="el" href="lotb_8c_source.html">lotb.c</a>.</p>
+<p>Definition at line <a class="el" href="lotb_8c_source.html#l00199">199</a> of file <a class="el" href="lotb_8c_source.html">lotb.c</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a144c514f678302d01efb05b8633e44f3"></a>
+<a class="anchor" id="a1517f6f20930981fd4e5cb03db04ab54"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -270,7 +277,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>typejeu</em>&#160;</td>
+          <td class="paramname"><em>typejeu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>solveur</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -286,12 +299,13 @@ Functions</h2></td></tr>
     <tr><td class="paramname">*m</td><td>: pointeur représentant la taille du jeu souhaitée </td></tr>
     <tr><td class="paramname">*nbcoup</td><td>: pointeur représentant le nombre de coup souhaité </td></tr>
     <tr><td class="paramname">*typeinitialisation</td><td>: pointeur représentant le type d'initialisation (à partir d'un fichier ou non) souhaitée </td></tr>
+    <tr><td class="paramname">*solveur</td><td>: pointeur représentant le choix du solveur </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>les valeurs souhaitées à travers les pointeurs </dd></dl>
 
-<p>Definition at line <a class="el" href="lotb_8c_source.html#l00023">23</a> of file <a class="el" href="lotb_8c_source.html">lotb.c</a>.</p>
+<p>Definition at line <a class="el" href="lotb_8c_source.html#l00025">25</a> of file <a class="el" href="lotb_8c_source.html">lotb.c</a>.</p>
 
 </div>
 </div>
@@ -317,7 +331,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>none (le fichier a été crée) </dd></dl>
 
-<p>Definition at line <a class="el" href="lotb_8c_source.html#l00132">132</a> of file <a class="el" href="lotb_8c_source.html">lotb.c</a>.</p>
+<p>Definition at line <a class="el" href="lotb_8c_source.html#l00145">145</a> of file <a class="el" href="lotb_8c_source.html">lotb.c</a>.</p>
 
 </div>
 </div>
@@ -361,7 +375,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 si le joueur a joué, 0 si il quitte (le nombre de coup et la couleur ont été modifiées) </dd></dl>
 
-<p>Definition at line <a class="el" href="lotb_8c_source.html#l00149">149</a> of file <a class="el" href="lotb_8c_source.html">lotb.c</a>.</p>
+<p>Definition at line <a class="el" href="lotb_8c_source.html#l00162">162</a> of file <a class="el" href="lotb_8c_source.html">lotb.c</a>.</p>
 
 </div>
 </div>

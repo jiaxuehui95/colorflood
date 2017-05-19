@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 /*#include "lotb.h"*/
-#include "lotc.h"
+#include "lotd.h"
 
 
 /**
@@ -14,18 +14,19 @@
   @ensures  la taille de damier souhaitée par l'utilisateur, le nombre de coups souhaité et le type d'initialisation (à partir d'un fichier ou non)
 */
 /**
-   \fn void lectureinit(int* m, int* nbcoup, char* typeinitialisation,char *typejeu)
+   \fn void lectureinit(int* m, int* nbcoup, char* typeinitialisation,char *typejeu, char *solveur)
    \brief récupère la taille souhaitée par l'utilisateur, le nombre de coup et le type d'initialisation qu'il souhaite
    \param *m : pointeur représentant la taille du jeu souhaitée
    \param *nbcoup : pointeur représentant le nombre de coup souhaité
    \param *typeinitialisation : pointeur représentant le type d'initialisation (à partir d'un fichier ou non) souhaitée
+   \param *solveur : pointeur représentant le choix du solveur
    \return les valeurs souhaitées à travers les pointeurs
 */
-void lectureinit(int* m, int* nbcoup, char* typeinitialisation,char *typejeu){
+void lectureinit(int* m, int* nbcoup, char* typeinitialisation,char *typejeu,char *solveur){
   printf("Quelle est la taille du plateau avec lequel vous voulez jouer ? \n");
-  printf("12 : (12*12) , 18 : (18*18) et 24 : (24*24)\n");
+  printf("6: (6*6) , 12 : (12*12) , 18 : (18*18) et 24 : (24*24)\n");
   scanf("%i",&(*m));
-  if(*m != 12 && *m != 18 && *m != 24){
+  if(*m != 6 && *m != 12 && *m != 18 && *m != 24){
     printf("\n");
     printf("Taille incorrecte !\n");
     printf("Ce n'est pas très gentil d'essayer de faire planter mon programme !\n");
@@ -62,6 +63,17 @@ void lectureinit(int* m, int* nbcoup, char* typeinitialisation,char *typejeu){
    
     printf("Puisque c'est ça, la partie sera en mode terminal !\n\n");
     *typejeu='n';
+  }
+  printf("Souhaitez-vous jouer avec un solveur ? (y/n)\n");
+  printf("Attention le nombre de coups sera initialisé à partir de la solution trouvée\n");
+  *solveur = get_carac();
+  vide_buffer();
+  if(*solveur!= 'y' && *solveur != 'n'){
+    printf("\n");
+    printf("Valeur incorrecte !\n");
+   
+    printf("Puisque c'est ça, vous jouerez sans solveur !\n\n");
+    *solveur='n';
   }
 }
 
@@ -177,24 +189,29 @@ int selection(int *c, int* nbcoup, int tache){
 @ensures  : le joueur joue jusqu'à ce qu'il quitte, gagne la partie ou épuise son nombre de coups. On libère la mémoire allouée aux matrices. Le jeu et le nombre de coups sont affichés à chaque tour. 
 */
 /**
-   \fn void jeu(matrice m, int nbcoup)
+   \fn void jeu(matrice m, int nbcoup, int choix)
    \brief permet au joueur de jouer. On alloue la mémoire de la matrice, on initialise la matrice d'identification, puis on joue tant que l'on n'a pas gagné ou épuisé le nombre de coups
    \param m : matrice valide
    \param nbcoup : entier correspondant au nombre de coups souhaitée par le joueur et qui est décrémenté lors du jeu
+   \param choix : entier qui détermine le choix pour le solveur
    \return none (se termine lorsque la partie est terminée ou que le joueur souhaite quitter la partie)
 */
-void jeu(matrice m, int nbcoup){
+void jeu(matrice m, int nbcoup, int choix){
   int c,i,j;
   matrice id = allocation(m.size);
-  pile p = (pile) malloc(sizeof(struct maillon));
-  p=NULL;
+  pile p=NULL;
   for(i=0;i<m.size;i++){
     for(j=0;j<m.size;j++){
       id.tab[i][j]=-1;
     }
   }
   identification(m.tab,id.tab,0,0,m.size);
-  solveur(m,id,p,0);
+  if(choix == 2){
+    nbcoup=solveur(m,id,p,0)+2; //+2 car on lui laisse un peu plus de chance
+  }
+  if(choix == 1){
+    nbcoup = solveuraleatoire(m,id,p)+2;
+  }
   while(!presence(id) && nbcoup!=0){
     affichage(m);
     printf("\nIl vous reste : %i coups\n",nbcoup);
@@ -206,13 +223,15 @@ void jeu(matrice m, int nbcoup){
     changement(m,id,c);
     identification(m.tab,id.tab,0,0,m.size);
   }
-  if(nbcoup==0){
-    printf("Vous avez épuisé votre nombre de coups et vous avez perdu!\n");
+  if(presence(id)){
+    affichage(m);
+    printf("\nBravo vous avez gagné!\n"); 
   }
   else{
-    affichage(m);
-    printf("\nBravo vous avez gagné!\n");
+    if(nbcoup == 0){  
+    printf("Vous avez épuisé votre nombre de coups et vous avez perdu!\n");
+    }
   }
   free1(m.tab,m.size);
-  free1(id.tab,id.size);  
+  free1(id.tab,id.size);
 }

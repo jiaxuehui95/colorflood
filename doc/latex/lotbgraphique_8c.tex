@@ -11,7 +11,8 @@
 {\ttfamily \#include $<$unistd.\+h$>$}\\*
 {\ttfamily \#include $<$time.\+h$>$}\\*
 {\ttfamily \#include $<$S\+D\+L/\+S\+D\+L.\+h$>$}\\*
-{\ttfamily \#include \char`\"{}lotbgraphique.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$S\+D\+L/\+S\+D\+L\+\_\+ttf.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}lotd.\+h\char`\"{}}\\*
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -21,7 +22,7 @@ void \hyperlink{lotbgraphique_8c_ab9d99d9c2c628afd6151650b5b814ced}{fill\+Screen
 \begin{DoxyCompactList}\small\item\em remplirer la fenetre avec une certaine couleur \end{DoxyCompactList}\item 
 S\+D\+L\+\_\+\+Surface $\ast$ \hyperlink{lotbgraphique_8c_a7bd68782fb11ee7130bf8c9f15e44aac}{initialiser} ()
 \begin{DoxyCompactList}\small\item\em initialiser la fenetre \end{DoxyCompactList}\item 
-void \hyperlink{lotbgraphique_8c_a9a7c3a9055b936aceb8c1e20d0b6d4ae}{events} (S\+D\+L\+\_\+\+Surface $\ast$ecran, \hyperlink{structmatrice}{matrice} m, int nbcoup)
+void \hyperlink{lotbgraphique_8c_a4e253a1f4f0c7f979c50658fea43e9ca}{events} (S\+D\+L\+\_\+\+Surface $\ast$ecran, \hyperlink{structmatrice}{matrice} m, int nbcoup, int choix)
 \begin{DoxyCompactList}\small\item\em le joueur joue jusqu\textquotesingle{}à ce qu\textquotesingle{}il quitte, gagne la partie ou épuise son nombre de coups. imprimer le grille dans la fenetre,On libère la mémoire allouée aux matrices. Le jeu et le nombre de coups sont affichés à chaque tour. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -45,6 +46,24 @@ int {\bfseries M} \mbox{[}3\mbox{]} =\{255,0,255\}\hypertarget{lotbgraphique_8c_
 
 \item 
 int {\bfseries G} \mbox{[}3\mbox{]} =\{130,130,130\}\hypertarget{lotbgraphique_8c_ac9702b306d1e7f4d9dace34433e1b213}{}\label{lotbgraphique_8c_ac9702b306d1e7f4d9dace34433e1b213}
+
+\item 
+S\+D\+L\+\_\+\+Color {\bfseries couleur\+Noire} = \{0, 0, 0\}\hypertarget{lotbgraphique_8c_a1c8c3102d21fd30e2488af144d5aea63}{}\label{lotbgraphique_8c_a1c8c3102d21fd30e2488af144d5aea63}
+
+\item 
+S\+D\+L\+\_\+\+Color {\bfseries couleur\+Blanche} = \{255, 255, 255\}\hypertarget{lotbgraphique_8c_a8caaaae1515525bed939b86abd35e5c1}{}\label{lotbgraphique_8c_a8caaaae1515525bed939b86abd35e5c1}
+
+\item 
+char {\bfseries nbcoups\+\_\+txt} \mbox{[}50\mbox{]} = \char`\"{}\char`\"{}\hypertarget{lotbgraphique_8c_a69ad8dfb2d439a28bef2a619bf6e4792}{}\label{lotbgraphique_8c_a69ad8dfb2d439a28bef2a619bf6e4792}
+
+\item 
+S\+D\+L\+\_\+\+Surface $\ast$ {\bfseries texte} = N\+U\+LL\hypertarget{lotbgraphique_8c_a5b66158197948c551bbf808da9f95726}{}\label{lotbgraphique_8c_a5b66158197948c551bbf808da9f95726}
+
+\item 
+S\+D\+L\+\_\+\+Rect {\bfseries position}\hypertarget{lotbgraphique_8c_ac06cf6a292dc0e70e28b394fa481aef2}{}\label{lotbgraphique_8c_ac06cf6a292dc0e70e28b394fa481aef2}
+
+\item 
+T\+T\+F\+\_\+\+Font $\ast$ {\bfseries police} = N\+U\+LL\hypertarget{lotbgraphique_8c_a49a11b0728728090fa1189391c9fe0c8}{}\label{lotbgraphique_8c_a49a11b0728728090fa1189391c9fe0c8}
 
 \end{DoxyCompactItemize}
 
@@ -95,17 +114,18 @@ none
 \end{DoxyReturn}
 
 
-Definition at line 47 of file lotbgraphique.\+c.
+Definition at line 52 of file lotbgraphique.\+c.
 
 \index{lotbgraphique.\+c@{lotbgraphique.\+c}!events@{events}}
 \index{events@{events}!lotbgraphique.\+c@{lotbgraphique.\+c}}
-\subsubsection[{\texorpdfstring{events(\+S\+D\+L\+\_\+\+Surface $\ast$ecran, matrice m, int nbcoup)}{events(SDL_Surface *ecran, matrice m, int nbcoup)}}]{\setlength{\rightskip}{0pt plus 5cm}void events (
+\subsubsection[{\texorpdfstring{events(\+S\+D\+L\+\_\+\+Surface $\ast$ecran, matrice m, int nbcoup, int choix)}{events(SDL_Surface *ecran, matrice m, int nbcoup, int choix)}}]{\setlength{\rightskip}{0pt plus 5cm}void events (
 \begin{DoxyParamCaption}
 \item[{S\+D\+L\+\_\+\+Surface $\ast$}]{ecran, }
 \item[{{\bf matrice}}]{m, }
-\item[{int}]{nbcoup}
+\item[{int}]{nbcoup, }
+\item[{int}]{choix}
 \end{DoxyParamCaption}
-)}\hypertarget{lotbgraphique_8c_a9a7c3a9055b936aceb8c1e20d0b6d4ae}{}\label{lotbgraphique_8c_a9a7c3a9055b936aceb8c1e20d0b6d4ae}
+)}\hypertarget{lotbgraphique_8c_a4e253a1f4f0c7f979c50658fea43e9ca}{}\label{lotbgraphique_8c_a4e253a1f4f0c7f979c50658fea43e9ca}
 
 
 le joueur joue jusqu\textquotesingle{}à ce qu\textquotesingle{}il quitte, gagne la partie ou épuise son nombre de coups. imprimer le grille dans la fenetre,On libère la mémoire allouée aux matrices. Le jeu et le nombre de coups sont affichés à chaque tour. 
@@ -118,13 +138,15 @@ le joueur joue jusqu\textquotesingle{}à ce qu\textquotesingle{}il quitte, gagne
 \hline
 {\em nbcoup} & \+: entier correspondant au nombre de coups souhaitée par le joueur et qui est décrémenté lors du jeu \\
 \hline
+{\em choix} & \+: entier correspondant au choix du solveur \\
+\hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 ecran \+: none 
 \end{DoxyReturn}
 
 
-Definition at line 120 of file lotbgraphique.\+c.
+Definition at line 137 of file lotbgraphique.\+c.
 
 \index{lotbgraphique.\+c@{lotbgraphique.\+c}!fill\+Screen@{fill\+Screen}}
 \index{fill\+Screen@{fill\+Screen}!lotbgraphique.\+c@{lotbgraphique.\+c}}
@@ -156,7 +178,7 @@ none
 \end{DoxyReturn}
 
 
-Definition at line 69 of file lotbgraphique.\+c.
+Definition at line 74 of file lotbgraphique.\+c.
 
 \index{lotbgraphique.\+c@{lotbgraphique.\+c}!initialiser@{initialiser}}
 \index{initialiser@{initialiser}!lotbgraphique.\+c@{lotbgraphique.\+c}}
@@ -179,5 +201,5 @@ ecran \+: ecran initialisé
 \end{DoxyReturn}
 
 
-Definition at line 84 of file lotbgraphique.\+c.
+Definition at line 89 of file lotbgraphique.\+c.
 

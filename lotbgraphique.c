@@ -10,7 +10,8 @@
 #include <time.h> /*Pour le rand()*/
 #include <SDL/SDL.h>
 #include <SDL/SDL.h>
-#include "lotbgraphique.h"
+#include <SDL/SDL_ttf.h>
+#include "lotd.h"
 
 /**
 \file lotbgraphique.c
@@ -24,7 +25,11 @@ int R[3]={255,0,0};
 int J[3]={255,255,0};
 int M[3]={255,0,255};
 int G[3]={130,130,130};
-
+ SDL_Color couleurNoire = {0, 0, 0}, couleurBlanche = {255, 255, 255};
+	char nbcoups_txt[50] = "";
+	   	SDL_Surface *texte = NULL;
+ 	SDL_Rect position;
+TTF_Font *police = NULL;
 
 /*
   @reuires: ecran initialise,  (px,py):le cooedonnee debut de rectangle,  size: taille de rectangle, r,g,b: code RGB pour indiquer la couleur
@@ -89,6 +94,7 @@ SDL_Surface *  initialiser()
     fprintf( stderr, "Video initialization failed: %s\n", SDL_GetError( ) );
     SDL_Quit( );
   }
+      TTF_Init();
   const SDL_VideoInfo* info= NULL;
   info = SDL_GetVideoInfo( );
   if( !info ) {
@@ -100,6 +106,16 @@ SDL_Surface *  initialiser()
   SDL_WM_SetCaption("exemple SDL", NULL);                 /*she zhi biao ti*/
     
   fillScreen(ecran, 0,0,0);
+  police = TTF_OpenFont("angelina.ttf", 55);
+
+ 	     sprintf(nbcoups_txt, "tapez d pour commancer, tapez q pour quitter"); /* On écrit dans la chaîne "temps" le nouveau temps */
+      	      SDL_FreeSurface(texte); /* On supprime la surface précédente */
+              texte = TTF_RenderText_Shaded(police, nbcoups_txt, couleurBlanche, couleurNoire); /* On écrit la chaîne temps dans la SDL_Surface */
+              position.x = 0;
+              position.y = 0;
+        	  SDL_BlitSurface(texte, NULL, ecran, &position); /* Blit du texte */
+        	  SDL_Flip(ecran); 
+        	  sleep(2);
   return ecran;
 }
 
@@ -110,14 +126,15 @@ SDL_Surface *  initialiser()
 
 */
 /**
-   \fn void events(SDL_Surface *ecran,matrice m,int nbcoup)
+   \fn void events(SDL_Surface *ecran,matrice m,int nbcoup,int choix)
    \brief le joueur joue jusqu'à ce qu'il quitte, gagne la partie ou épuise son nombre de coups. imprimer le grille dans la fenetre,On libère la mémoire allouée aux matrices. Le jeu et le nombre de coups sont affichés à chaque tour.  
    \param ecran : ecran initialisé 
    \param m : tableau représentant le tableau d'une matrice (le jeu) 
-   \param nbcoup : entier correspondant au nombre de coups souhaitée par le joueur et qui est décrémenté lors du jeu            
+   \param nbcoup : entier correspondant au nombre de coups souhaitée par le joueur et qui est décrémenté lors du jeu       
+   \param choix : entier correspondant au choix du solveur  
    \return ecran  : none
 */
-void events(SDL_Surface *ecran,matrice m,int nbcoup)
+void events(SDL_Surface *ecran,matrice m,int nbcoup,int choix)
 {
   SDL_Event event;
   int continuer = 1;
@@ -125,7 +142,11 @@ void events(SDL_Surface *ecran,matrice m,int nbcoup)
   int c;
   int quitte=0;
   int x,y;
+   police = TTF_OpenFont("angelina.ttf", 65);
+fillScreen(ecran, 0,0,0);
+
   fprintf(stderr,"tapez d pour commancer,tapez q pour quitter\n");
+	pile p=NULL;
   matrice id = allocation(m.size);
   for(i=0;i<m.size;i++)
     {
@@ -135,7 +156,14 @@ void events(SDL_Surface *ecran,matrice m,int nbcoup)
 	}
 
     }
+	
   identification(m.tab,id.tab,0,0,m.size);
+  if(choix == 1){
+    nbcoup=solveuraleatoire(m,id,p)+2;
+  }
+  if(choix == 2){
+    nbcoup=solveur(m,id,p,0)+2;
+  }
   while(!presence(id) && nbcoup!=0 && quitte != 1)
     {	
       fprintf(stderr,"Nombre de coups restants %i\n",nbcoup);
@@ -150,7 +178,8 @@ void events(SDL_Surface *ecran,matrice m,int nbcoup)
 	    case SDL_KEYDOWN: // gestion des évènements clavier
 	      switch (event.key.keysym.sym) 
 		{
-		case SDLK_d:                                     /*hua tu*/
+		case SDLK_d: 
+			                        /*hua tu*/
 		  for(i=0;i<m.size;i++) 
 		    {
 		      for(j=0;j<m.size;j++)
@@ -169,6 +198,14 @@ void events(SDL_Surface *ecran,matrice m,int nbcoup)
 			    {drawRectangle(ecran, 3+(33*j), 3+(33*i), 30, G[0], G[1], G[2]);}				
 			}
 		    }
+		   sprintf(nbcoups_txt, "coups restants: %d ", nbcoup);
+		    texte = TTF_RenderText_Shaded(police, nbcoups_txt, couleurBlanche, couleurNoire);
+			 position.x = 300;
+              position.y = 875;
+        	  SDL_BlitSurface(texte, NULL, ecran, &position); /* Blit du texte */
+        	  SDL_Flip(ecran);            
+
+
 		  drawRectangle(ecran, 3, 900, 30, B[0], B[1], B[2]);
 		  drawRectangle(ecran, 36, 900, 30, V[0], V[1], V[2]);
 		  drawRectangle(ecran, 69, 900, 30, R[0], R[1], R[2]);
@@ -219,6 +256,13 @@ void events(SDL_Surface *ecran,matrice m,int nbcoup)
 		  if(c!=0 &&(c!=m.tab[0][0]))
 		    {
 		      nbcoup--;
+		      sprintf(nbcoups_txt, "coups restants: %d ", nbcoup); /* On écrit dans la chaîne "temps" le nouveau temps */
+      	      SDL_FreeSurface(texte); /* On supprime la surface précédente */
+              texte = TTF_RenderText_Shaded(police, nbcoups_txt, couleurBlanche, couleurNoire); /* On écrit la chaîne temps dans la SDL_Surface */
+              position.x = 300;
+              position.y = 875;
+        	  SDL_BlitSurface(texte, NULL, ecran, &position); /* Blit du texte */
+        	  SDL_Flip(ecran);
 		      for(i=0;i<m.size;i++)
 			{
 			  for(j=0;j<m.size;j++)
@@ -255,14 +299,32 @@ void events(SDL_Surface *ecran,matrice m,int nbcoup)
 	}
       identification(m.tab,id.tab,0,0,m.size);
     }
-  if(nbcoup<=0)
+  
+  if(presence(id)){
+    fprintf(stderr,"Bravo!!vous avez gagne\n");
+ 	     sprintf(nbcoups_txt, "Bravo!!vous avez gagne"); /* On écrit dans la chaîne "temps" le nouveau temps */
+      	      SDL_FreeSurface(texte); /* On supprime la surface précédente */
+              texte = TTF_RenderText_Shaded(police, nbcoups_txt, couleurBlanche, couleurNoire); /* On écrit la chaîne temps dans la SDL_Surface */
+              position.x = 200;
+              position.y = 450;
+        	  SDL_BlitSurface(texte, NULL, ecran, &position); /* Blit du texte */
+        	  SDL_Flip(ecran); 
+        	  sleep(2);
+ 
+  }
+  else{
+    if(nbcoup<=0)
     {
       fprintf(stderr,"Il ne reste plus de coups,vous avez perdu\n");
-
-    }
-  else{
-    if(presence(id)){
-    fprintf(stderr,"Bravo!!vous avez gagné\n");
+      sprintf(nbcoups_txt, "Il ne reste plus de coups,vous avez perdu "); /* On écrit dans la chaîne "temps" le nouveau temps */
+      	      SDL_FreeSurface(texte); /* On supprime la surface précédente */
+              texte = TTF_RenderText_Shaded(police, nbcoups_txt, couleurBlanche, couleurNoire); /* On écrit la chaîne temps dans la SDL_Surface */
+              position.x = 100;
+              position.y = 450;
+        	  SDL_BlitSurface(texte, NULL, ecran, &position); /* Blit du texte */
+        	  SDL_Flip(ecran); 
+        	    sleep(2);
+ 
     }
     else{
       fprintf(stderr,"Vous avez quitté\n");
@@ -270,7 +332,15 @@ void events(SDL_Surface *ecran,matrice m,int nbcoup)
   }
     free1(m.tab,m.size);
     free1(id.tab,id.size);
+
+     TTF_CloseFont(police);
+    TTF_Quit();
+
+    SDL_FreeSurface(texte);
     SDL_Quit();
+   
+ 
 }
 
 
+ 

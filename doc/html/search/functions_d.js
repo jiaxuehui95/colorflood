@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vide_5fbuffer',['vide_buffer',['../lota_8c.html#a4c1a9f46471d06895b11012baa6b02ea',1,'lota.c']]]
+  ['unesolutiontrouvee',['uneSolutionTrouvee',['../lotc_8c.html#a45116f6a3710ab13d2b70b198f3133a5',1,'lotc.c']]]
 ];
