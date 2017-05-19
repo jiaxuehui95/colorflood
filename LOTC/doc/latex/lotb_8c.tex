@@ -1,0 +1,184 @@
+\hypertarget{lotb_8c}{}\section{lotb.\+c File Reference}
+\label{lotb_8c}\index{lotb.\+c@{lotb.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}lotc.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{lotb_8c_a144c514f678302d01efb05b8633e44f3}{lectureinit} (int $\ast$m, int $\ast$nbcoup, char $\ast$typeinitialisation, char $\ast$typejeu)
+\begin{DoxyCompactList}\small\item\em récupère la taille souhaitée par l\textquotesingle{}utilisateur, le nombre de coup et le type d\textquotesingle{}initialisation qu\textquotesingle{}il souhaite \end{DoxyCompactList}\item 
+void \hyperlink{lotb_8c_a04bf46036b57df3e0e41a3fb0f3cf10f}{choixinitialisation} (char i, \hyperlink{structmatrice}{matrice} m)
+\begin{DoxyCompactList}\small\item\em permet d\textquotesingle{}initialiser la matrice en fonction du choix de l\textquotesingle{}utilisateur, soit à partir d\textquotesingle{}un fichier soit aléatoirement. On peut également choisir de stocker les valeurs en créant ou remplaçant un fichier. \end{DoxyCompactList}\item 
+void \hyperlink{lotb_8c_a6f5d3c9d5c7b977e8fc0170bb3eaa85e}{affichage} (\hyperlink{structmatrice}{matrice} m)
+\begin{DoxyCompactList}\small\item\em affiche la matrice passée en paramètre \end{DoxyCompactList}\item 
+void \hyperlink{lotb_8c_a137d78a01e63d3b66d1b2ed0de0f4c4c}{message} ()
+\begin{DoxyCompactList}\small\item\em affiche le message permettant à l\textquotesingle{}utilisateur de savoir quelles valeurs il peut rentrer \end{DoxyCompactList}\item 
+int \hyperlink{lotb_8c_a449590c2be70df742108dc714bbcacca}{selection} (int $\ast$c, int $\ast$nbcoup, int tache)
+\begin{DoxyCompactList}\small\item\em permet de demander et de récupérer la valeur que l\textquotesingle{}utilisateur souhaite joueur. Si il souhaite quitter la partie il peut rentrer q. On diminue également le nombre de coups restants si il rentre une valeur valide. \end{DoxyCompactList}\item 
+void \hyperlink{lotb_8c_ac55c563e45f52fa195d1481d247e301c}{jeu} (\hyperlink{structmatrice}{matrice} m, int nbcoup)
+\begin{DoxyCompactList}\small\item\em permet au joueur de jouer. On alloue la mémoire de la matrice, on initialise la matrice d\textquotesingle{}identification, puis on joue tant que l\textquotesingle{}on n\textquotesingle{}a pas gagné ou épuisé le nombre de coups \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Julian Le Couster, Emmanuel-\/\+Paul Vincent, Xuehui Jia, Amina Zeghida 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\index{lotb.\+c@{lotb.\+c}!affichage@{affichage}}
+\index{affichage@{affichage}!lotb.\+c@{lotb.\+c}}
+\subsubsection[{\texorpdfstring{affichage(matrice m)}{affichage(matrice m)}}]{\setlength{\rightskip}{0pt plus 5cm}void affichage (
+\begin{DoxyParamCaption}
+\item[{{\bf matrice}}]{m}
+\end{DoxyParamCaption}
+)}\hypertarget{lotb_8c_a6f5d3c9d5c7b977e8fc0170bb3eaa85e}{}\label{lotb_8c_a6f5d3c9d5c7b977e8fc0170bb3eaa85e}
+
+
+affiche la matrice passée en paramètre 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & \+: matrice valide \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none (le fichier a été affichée) 
+\end{DoxyReturn}
+
+
+Definition at line 110 of file lotb.\+c.
+
+\index{lotb.\+c@{lotb.\+c}!choixinitialisation@{choixinitialisation}}
+\index{choixinitialisation@{choixinitialisation}!lotb.\+c@{lotb.\+c}}
+\subsubsection[{\texorpdfstring{choixinitialisation(char i, matrice m)}{choixinitialisation(char i, matrice m)}}]{\setlength{\rightskip}{0pt plus 5cm}void choixinitialisation (
+\begin{DoxyParamCaption}
+\item[{char}]{i, }
+\item[{{\bf matrice}}]{m}
+\end{DoxyParamCaption}
+)}\hypertarget{lotb_8c_a04bf46036b57df3e0e41a3fb0f3cf10f}{}\label{lotb_8c_a04bf46036b57df3e0e41a3fb0f3cf10f}
+
+
+permet d\textquotesingle{}initialiser la matrice en fonction du choix de l\textquotesingle{}utilisateur, soit à partir d\textquotesingle{}un fichier soit aléatoirement. On peut également choisir de stocker les valeurs en créant ou remplaçant un fichier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & \+: matrice valide \\
+\hline
+{\em i} & \+: caractère précisant si l\textquotesingle{}utilisateur souhaite initialiser ou non à partir d\textquotesingle{}un fichier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none (la matrice est initialisée) 
+\end{DoxyReturn}
+
+
+Definition at line 80 of file lotb.\+c.
+
+\index{lotb.\+c@{lotb.\+c}!jeu@{jeu}}
+\index{jeu@{jeu}!lotb.\+c@{lotb.\+c}}
+\subsubsection[{\texorpdfstring{jeu(matrice m, int nbcoup)}{jeu(matrice m, int nbcoup)}}]{\setlength{\rightskip}{0pt plus 5cm}void jeu (
+\begin{DoxyParamCaption}
+\item[{{\bf matrice}}]{m, }
+\item[{int}]{nbcoup}
+\end{DoxyParamCaption}
+)}\hypertarget{lotb_8c_ac55c563e45f52fa195d1481d247e301c}{}\label{lotb_8c_ac55c563e45f52fa195d1481d247e301c}
+
+
+permet au joueur de jouer. On alloue la mémoire de la matrice, on initialise la matrice d\textquotesingle{}identification, puis on joue tant que l\textquotesingle{}on n\textquotesingle{}a pas gagné ou épuisé le nombre de coups 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & \+: matrice valide \\
+\hline
+{\em nbcoup} & \+: entier correspondant au nombre de coups souhaitée par le joueur et qui est décrémenté lors du jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none (se termine lorsque la partie est terminée ou que le joueur souhaite quitter la partie) 
+\end{DoxyReturn}
+
+
+Definition at line 186 of file lotb.\+c.
+
+\index{lotb.\+c@{lotb.\+c}!lectureinit@{lectureinit}}
+\index{lectureinit@{lectureinit}!lotb.\+c@{lotb.\+c}}
+\subsubsection[{\texorpdfstring{lectureinit(int $\ast$m, int $\ast$nbcoup, char $\ast$typeinitialisation, char $\ast$typejeu)}{lectureinit(int *m, int *nbcoup, char *typeinitialisation, char *typejeu)}}]{\setlength{\rightskip}{0pt plus 5cm}void lectureinit (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{m, }
+\item[{int $\ast$}]{nbcoup, }
+\item[{char $\ast$}]{typeinitialisation, }
+\item[{char $\ast$}]{typejeu}
+\end{DoxyParamCaption}
+)}\hypertarget{lotb_8c_a144c514f678302d01efb05b8633e44f3}{}\label{lotb_8c_a144c514f678302d01efb05b8633e44f3}
+
+
+récupère la taille souhaitée par l\textquotesingle{}utilisateur, le nombre de coup et le type d\textquotesingle{}initialisation qu\textquotesingle{}il souhaite 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$m} & \+: pointeur représentant la taille du jeu souhaitée \\
+\hline
+{\em $\ast$nbcoup} & \+: pointeur représentant le nombre de coup souhaité \\
+\hline
+{\em $\ast$typeinitialisation} & \+: pointeur représentant le type d\textquotesingle{}initialisation (à partir d\textquotesingle{}un fichier ou non) souhaitée \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+les valeurs souhaitées à travers les pointeurs 
+\end{DoxyReturn}
+
+
+Definition at line 24 of file lotb.\+c.
+
+\index{lotb.\+c@{lotb.\+c}!message@{message}}
+\index{message@{message}!lotb.\+c@{lotb.\+c}}
+\subsubsection[{\texorpdfstring{message()}{message()}}]{\setlength{\rightskip}{0pt plus 5cm}void message (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{lotb_8c_a137d78a01e63d3b66d1b2ed0de0f4c4c}{}\label{lotb_8c_a137d78a01e63d3b66d1b2ed0de0f4c4c}
+
+
+affiche le message permettant à l\textquotesingle{}utilisateur de savoir quelles valeurs il peut rentrer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none (le fichier a été crée) 
+\end{DoxyReturn}
+
+
+Definition at line 133 of file lotb.\+c.
+
+\index{lotb.\+c@{lotb.\+c}!selection@{selection}}
+\index{selection@{selection}!lotb.\+c@{lotb.\+c}}
+\subsubsection[{\texorpdfstring{selection(int $\ast$c, int $\ast$nbcoup, int tache)}{selection(int *c, int *nbcoup, int tache)}}]{\setlength{\rightskip}{0pt plus 5cm}int selection (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{c, }
+\item[{int $\ast$}]{nbcoup, }
+\item[{int}]{tache}
+\end{DoxyParamCaption}
+)}\hypertarget{lotb_8c_a449590c2be70df742108dc714bbcacca}{}\label{lotb_8c_a449590c2be70df742108dc714bbcacca}
+
+
+permet de demander et de récupérer la valeur que l\textquotesingle{}utilisateur souhaite joueur. Si il souhaite quitter la partie il peut rentrer q. On diminue également le nombre de coups restants si il rentre une valeur valide. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$c} & \+: un pointeur correspondant au choix de jeu de l\textquotesingle{}utilisateur \\
+\hline
+{\em $\ast$nbcoup} & \+: pointeur correspondant au nombre de coups restants de l\textquotesingle{}utilisateur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 si le joueur a joué, 0 si il quitte (le nombre de coup et la couleur ont été modifiées) 
+\end{DoxyReturn}
+
+
+Definition at line 150 of file lotb.\+c.
+

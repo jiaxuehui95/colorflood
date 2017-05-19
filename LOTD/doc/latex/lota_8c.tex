@@ -1,0 +1,430 @@
+\hypertarget{lota_8c}{}\section{lota.\+c File Reference}
+\label{lota_8c}\index{lota.\+c@{lota.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$math.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$sys/types.\+h$>$}\\*
+{\ttfamily \#include $<$sys/stat.\+h$>$}\\*
+{\ttfamily \#include $<$fcntl.\+h$>$}\\*
+{\ttfamily \#include $<$errno.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$time.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}lota.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{lota_8c_a2bbe646c052baf99f04a367ef6031d74}{clean} ()
+\begin{DoxyCompactList}\small\item\em efface l\textquotesingle{}écran \end{DoxyCompactList}\item 
+char \hyperlink{lota_8c_a7d9d70add6ae07fa616b967d6648c1cf}{get\+\_\+carac} ()
+\begin{DoxyCompactList}\small\item\em récupère les valeurs rentrées par l\textquotesingle{}utilisateur, même s\textquotesingle{}il rentre plusieurs caractères seul le premier aura une influence sur le jeu \end{DoxyCompactList}\item 
+void \hyperlink{lota_8c_a4c1a9f46471d06895b11012baa6b02ea}{vide\+\_\+buffer} ()
+\begin{DoxyCompactList}\small\item\em vide le buffer utilisé lors de la question get\+\_\+carac \end{DoxyCompactList}\item 
+void \hyperlink{lota_8c_a365cddcbb18ee51a2b3aa4695ea2ad23}{presentation} ()
+\begin{DoxyCompactList}\small\item\em efface l\textquotesingle{}écran et affiche le nom du jeu \end{DoxyCompactList}\item 
+void \hyperlink{lota_8c_a4adafcda2d6c4cb24482ac6b24d5a126}{initialisation} (\hyperlink{structmatrice}{matrice} m)
+\begin{DoxyCompactList}\small\item\em permet d\textquotesingle{}initialiser les valeurs de la matrice avec des valeurs aléatoires \end{DoxyCompactList}\item 
+\hyperlink{structmatrice}{matrice} \hyperlink{lota_8c_a1b53189a0a89867cd8691765fa31943c}{allocation} (int size)
+\begin{DoxyCompactList}\small\item\em permet d\textquotesingle{}allouer la mémoire du tableau de la matrice en fonction de la taille souhaitée \end{DoxyCompactList}\item 
+void \hyperlink{lota_8c_a7c979493d10e6502f8926737468c5c17}{free1} (int $\ast$$\ast$tab, int size)
+\begin{DoxyCompactList}\small\item\em permet de libérer la mémoire libérer pour une grille \end{DoxyCompactList}\item 
+\hyperlink{structmatrice}{matrice} \hyperlink{lota_8c_a68de409afa7ce34f97711fb1663a7a95}{initialisationfichier1} (\hyperlink{structmatrice}{matrice} m)
+\begin{DoxyCompactList}\small\item\em permet d\textquotesingle{}initialiser les valeurs de la matrice à partir d\textquotesingle{}un fichier, en récupérant son nom \end{DoxyCompactList}\item 
+void \hyperlink{lota_8c_aec5768f4129f7b395a7c25e5ce60e0d2}{create\+\_\+fichier1} (\hyperlink{structmatrice}{matrice} m)
+\begin{DoxyCompactList}\small\item\em permet de créer un fichier et de stocker les valeurs du tableau de la matrice dans ce fichier, on demande le nom de ce fichier à l\textquotesingle{}utilisateur et si un fichier porte déjà ce nom alors il est remplacé \end{DoxyCompactList}\item 
+\hyperlink{structmatrice}{matrice} \hyperlink{lota_8c_a74c1bcfcd27e81b0c9c3f4c7ff0ade4f}{remplace} (\hyperlink{structmatrice}{matrice} m, int x, int y, int c)
+\begin{DoxyCompactList}\small\item\em remplace la valeur de coordonnées (x,y) dans le tableau de la matrice m par la valeur c \end{DoxyCompactList}\item 
+char \hyperlink{lota_8c_ae58d6e30612ceca75cbf08e56ec103bc}{itoc} (int i)
+\begin{DoxyCompactList}\small\item\em convertit un entier en caractère en fonction des caractères souhaités et F si l\textquotesingle{}entier ne correspond à rien \end{DoxyCompactList}\item 
+int \hyperlink{lota_8c_a7faaf4e1b37f04098fe523af1d27d78c}{ctoi} (char c)
+\begin{DoxyCompactList}\small\item\em convertit un caractère en entier en fonction des caractères souhaités et 0 si le caractère ne correspond à rien \end{DoxyCompactList}\item 
+void \hyperlink{lota_8c_a66a31b92c27152ff9a06f870e1c5cda0}{identification} (int $\ast$$\ast$matrix, int $\ast$$\ast$flag, int x, int y, int size)
+\begin{DoxyCompactList}\small\item\em Trouve la tâche de la couleur de la case du coin supérieur gauche, et change le flag \+: 1 si la case appartient à la tâche, 0 sinon et -\/1 si elle n\textquotesingle{}a pas été testée. \end{DoxyCompactList}\item 
+\hyperlink{structmatrice}{matrice} \hyperlink{lota_8c_a37b23986c8bce9116b445142940869e3}{changement} (\hyperlink{structmatrice}{matrice} m, \hyperlink{structmatrice}{matrice} id, int c)
+\begin{DoxyCompactList}\small\item\em modifie les valeurs du tableau de la matrice par c si il y a un 1 dans la case associée du tableau de la matrice id (c\textquotesingle{}est à dire si la case appartient à la tâche de couleur) \end{DoxyCompactList}\item 
+int \hyperlink{lota_8c_a63e2bbf48eb54de7aec5abd903850b7a}{presence} (\hyperlink{structmatrice}{matrice} id)
+\begin{DoxyCompactList}\small\item\em renvoie 1 si le jeu est terminé c\textquotesingle{}est à dire s\textquotesingle{}il y a des 1 partout dans la matrice d\textquotesingle{}identification \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Julian Le Couster, Emmanuel-\/\+Paul Vincent, Xuehui Jia, Amina Zeghida 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\index{lota.\+c@{lota.\+c}!allocation@{allocation}}
+\index{allocation@{allocation}!lota.\+c@{lota.\+c}}
+\subsubsection[{\texorpdfstring{allocation(int size)}{allocation(int size)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf matrice} allocation (
+\begin{DoxyParamCaption}
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}\hypertarget{lota_8c_a1b53189a0a89867cd8691765fa31943c}{}\label{lota_8c_a1b53189a0a89867cd8691765fa31943c}
+
+
+permet d\textquotesingle{}allouer la mémoire du tableau de la matrice en fonction de la taille souhaitée 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & \+: entier représentant la taille souhaitée \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+la matrice avec la mémoire de son tableau allouée 
+\end{DoxyReturn}
+
+
+Definition at line 120 of file lota.\+c.
+
+\index{lota.\+c@{lota.\+c}!changement@{changement}}
+\index{changement@{changement}!lota.\+c@{lota.\+c}}
+\subsubsection[{\texorpdfstring{changement(matrice m, matrice id, int c)}{changement(matrice m, matrice id, int c)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf matrice} changement (
+\begin{DoxyParamCaption}
+\item[{{\bf matrice}}]{m, }
+\item[{{\bf matrice}}]{id, }
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}\hypertarget{lota_8c_a37b23986c8bce9116b445142940869e3}{}\label{lota_8c_a37b23986c8bce9116b445142940869e3}
+
+
+modifie les valeurs du tableau de la matrice par c si il y a un 1 dans la case associée du tableau de la matrice id (c\textquotesingle{}est à dire si la case appartient à la tâche de couleur) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & \+: matrice valide \\
+\hline
+{\em id} & \+: matrice valide \\
+\hline
+{\em c} & \+: entier représentant une couleur, appartient à \mbox{[}1,6\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+la matrice modifiée avec une tâche de couleur c 
+\end{DoxyReturn}
+
+
+Definition at line 362 of file lota.\+c.
+
+\index{lota.\+c@{lota.\+c}!clean@{clean}}
+\index{clean@{clean}!lota.\+c@{lota.\+c}}
+\subsubsection[{\texorpdfstring{clean()}{clean()}}]{\setlength{\rightskip}{0pt plus 5cm}void clean (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{lota_8c_a2bbe646c052baf99f04a367ef6031d74}{}\label{lota_8c_a2bbe646c052baf99f04a367ef6031d74}
+
+
+efface l\textquotesingle{}écran 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+Definition at line 31 of file lota.\+c.
+
+\index{lota.\+c@{lota.\+c}!create\+\_\+fichier1@{create\+\_\+fichier1}}
+\index{create\+\_\+fichier1@{create\+\_\+fichier1}!lota.\+c@{lota.\+c}}
+\subsubsection[{\texorpdfstring{create\+\_\+fichier1(matrice m)}{create_fichier1(matrice m)}}]{\setlength{\rightskip}{0pt plus 5cm}void create\+\_\+fichier1 (
+\begin{DoxyParamCaption}
+\item[{{\bf matrice}}]{m}
+\end{DoxyParamCaption}
+)}\hypertarget{lota_8c_aec5768f4129f7b395a7c25e5ce60e0d2}{}\label{lota_8c_aec5768f4129f7b395a7c25e5ce60e0d2}
+
+
+permet de créer un fichier et de stocker les valeurs du tableau de la matrice dans ce fichier, on demande le nom de ce fichier à l\textquotesingle{}utilisateur et si un fichier porte déjà ce nom alors il est remplacé 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & \+: matrice valide \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none (le fichier a été crée) 
+\end{DoxyReturn}
+
+
+Definition at line 197 of file lota.\+c.
+
+\index{lota.\+c@{lota.\+c}!ctoi@{ctoi}}
+\index{ctoi@{ctoi}!lota.\+c@{lota.\+c}}
+\subsubsection[{\texorpdfstring{ctoi(char c)}{ctoi(char c)}}]{\setlength{\rightskip}{0pt plus 5cm}int ctoi (
+\begin{DoxyParamCaption}
+\item[{char}]{c}
+\end{DoxyParamCaption}
+)}\hypertarget{lota_8c_a7faaf4e1b37f04098fe523af1d27d78c}{}\label{lota_8c_a7faaf4e1b37f04098fe523af1d27d78c}
+
+
+convertit un caractère en entier en fonction des caractères souhaités et 0 si le caractère ne correspond à rien 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & \+: caractère représentant une couleur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+l\textquotesingle{}entier correspondant à la couleur représentée par le caractère 
+\end{DoxyReturn}
+
+
+Definition at line 286 of file lota.\+c.
+
+\index{lota.\+c@{lota.\+c}!free1@{free1}}
+\index{free1@{free1}!lota.\+c@{lota.\+c}}
+\subsubsection[{\texorpdfstring{free1(int $\ast$$\ast$tab, int size)}{free1(int **tab, int size)}}]{\setlength{\rightskip}{0pt plus 5cm}void free1 (
+\begin{DoxyParamCaption}
+\item[{int $\ast$$\ast$}]{tab, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}\hypertarget{lota_8c_a7c979493d10e6502f8926737468c5c17}{}\label{lota_8c_a7c979493d10e6502f8926737468c5c17}
+
+
+permet de libérer la mémoire libérer pour une grille 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tab} & \+: tableau d\textquotesingle{}entiers valide \\
+\hline
+{\em size} & \+: entier correspondant à la taille du tableau \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+Definition at line 140 of file lota.\+c.
+
+\index{lota.\+c@{lota.\+c}!get\+\_\+carac@{get\+\_\+carac}}
+\index{get\+\_\+carac@{get\+\_\+carac}!lota.\+c@{lota.\+c}}
+\subsubsection[{\texorpdfstring{get\+\_\+carac()}{get_carac()}}]{\setlength{\rightskip}{0pt plus 5cm}char get\+\_\+carac (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{lota_8c_a7d9d70add6ae07fa616b967d6648c1cf}{}\label{lota_8c_a7d9d70add6ae07fa616b967d6648c1cf}
+
+
+récupère les valeurs rentrées par l\textquotesingle{}utilisateur, même s\textquotesingle{}il rentre plusieurs caractères seul le premier aura une influence sur le jeu 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+la première valeur que l\textquotesingle{}utilisateur a rentré 
+\end{DoxyReturn}
+
+
+Definition at line 44 of file lota.\+c.
+
+\index{lota.\+c@{lota.\+c}!identification@{identification}}
+\index{identification@{identification}!lota.\+c@{lota.\+c}}
+\subsubsection[{\texorpdfstring{identification(int $\ast$$\ast$matrix, int $\ast$$\ast$flag, int x, int y, int size)}{identification(int **matrix, int **flag, int x, int y, int size)}}]{\setlength{\rightskip}{0pt plus 5cm}void identification (
+\begin{DoxyParamCaption}
+\item[{int $\ast$$\ast$}]{matrix, }
+\item[{int $\ast$$\ast$}]{flag, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}\hypertarget{lota_8c_a66a31b92c27152ff9a06f870e1c5cda0}{}\label{lota_8c_a66a31b92c27152ff9a06f870e1c5cda0}
+
+
+Trouve la tâche de la couleur de la case du coin supérieur gauche, et change le flag \+: 1 si la case appartient à la tâche, 0 sinon et -\/1 si elle n\textquotesingle{}a pas été testée. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$$\ast$matrix} & \+: tableau représentant le tableau d\textquotesingle{}une matrice (le jeu) \\
+\hline
+{\em $\ast$$\ast$flag} & \+: tableau représentant le tableau de la matrice d\textquotesingle{}identification \\
+\hline
+{\em x} & \+: entier correspondant à la ligne à tester \\
+\hline
+{\em y} & \+: entier correspondant à la colonne à tester \\
+\hline
+{\em size} & \+: entier correspondant à la taille du tableau de la matrice \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none (le tableau flag est modifiée pour toutes les valeurs de x et y) 
+\end{DoxyReturn}
+
+
+Definition at line 317 of file lota.\+c.
+
+\index{lota.\+c@{lota.\+c}!initialisation@{initialisation}}
+\index{initialisation@{initialisation}!lota.\+c@{lota.\+c}}
+\subsubsection[{\texorpdfstring{initialisation(matrice m)}{initialisation(matrice m)}}]{\setlength{\rightskip}{0pt plus 5cm}void initialisation (
+\begin{DoxyParamCaption}
+\item[{{\bf matrice}}]{m}
+\end{DoxyParamCaption}
+)}\hypertarget{lota_8c_a4adafcda2d6c4cb24482ac6b24d5a126}{}\label{lota_8c_a4adafcda2d6c4cb24482ac6b24d5a126}
+
+
+permet d\textquotesingle{}initialiser les valeurs de la matrice avec des valeurs aléatoires 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & \+: matrice valide \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none (la matrice est modifier) 
+\end{DoxyReturn}
+
+
+Definition at line 99 of file lota.\+c.
+
+\index{lota.\+c@{lota.\+c}!initialisationfichier1@{initialisationfichier1}}
+\index{initialisationfichier1@{initialisationfichier1}!lota.\+c@{lota.\+c}}
+\subsubsection[{\texorpdfstring{initialisationfichier1(matrice m)}{initialisationfichier1(matrice m)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf matrice} initialisationfichier1 (
+\begin{DoxyParamCaption}
+\item[{{\bf matrice}}]{m}
+\end{DoxyParamCaption}
+)}\hypertarget{lota_8c_a68de409afa7ce34f97711fb1663a7a95}{}\label{lota_8c_a68de409afa7ce34f97711fb1663a7a95}
+
+
+permet d\textquotesingle{}initialiser les valeurs de la matrice à partir d\textquotesingle{}un fichier, en récupérant son nom 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & \+: matrice valide \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+la matrice initialisée à partir des valeurs du fichier dont le nom a été rentré par l\textquotesingle{}utilisateur 
+\end{DoxyReturn}
+
+
+Definition at line 157 of file lota.\+c.
+
+\index{lota.\+c@{lota.\+c}!itoc@{itoc}}
+\index{itoc@{itoc}!lota.\+c@{lota.\+c}}
+\subsubsection[{\texorpdfstring{itoc(int i)}{itoc(int i)}}]{\setlength{\rightskip}{0pt plus 5cm}char itoc (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)}\hypertarget{lota_8c_ae58d6e30612ceca75cbf08e56ec103bc}{}\label{lota_8c_ae58d6e30612ceca75cbf08e56ec103bc}
+
+
+convertit un entier en caractère en fonction des caractères souhaités et F si l\textquotesingle{}entier ne correspond à rien 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & \+: entier représentant une couleur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+le caractère correspondant à la couleur représentée par l\textquotesingle{}entier 
+\end{DoxyReturn}
+
+
+Definition at line 262 of file lota.\+c.
+
+\index{lota.\+c@{lota.\+c}!presence@{presence}}
+\index{presence@{presence}!lota.\+c@{lota.\+c}}
+\subsubsection[{\texorpdfstring{presence(matrice id)}{presence(matrice id)}}]{\setlength{\rightskip}{0pt plus 5cm}int presence (
+\begin{DoxyParamCaption}
+\item[{{\bf matrice}}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{lota_8c_a63e2bbf48eb54de7aec5abd903850b7a}{}\label{lota_8c_a63e2bbf48eb54de7aec5abd903850b7a}
+
+
+renvoie 1 si le jeu est terminé c\textquotesingle{}est à dire s\textquotesingle{}il y a des 1 partout dans la matrice d\textquotesingle{}identification 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \+: matrice valide \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 si l\textquotesingle{}utilisateur a gagné,0 sinon 
+\end{DoxyReturn}
+
+
+Definition at line 390 of file lota.\+c.
+
+\index{lota.\+c@{lota.\+c}!presentation@{presentation}}
+\index{presentation@{presentation}!lota.\+c@{lota.\+c}}
+\subsubsection[{\texorpdfstring{presentation()}{presentation()}}]{\setlength{\rightskip}{0pt plus 5cm}void presentation (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{lota_8c_a365cddcbb18ee51a2b3aa4695ea2ad23}{}\label{lota_8c_a365cddcbb18ee51a2b3aa4695ea2ad23}
+
+
+efface l\textquotesingle{}écran et affiche le nom du jeu 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+Definition at line 77 of file lota.\+c.
+
+\index{lota.\+c@{lota.\+c}!remplace@{remplace}}
+\index{remplace@{remplace}!lota.\+c@{lota.\+c}}
+\subsubsection[{\texorpdfstring{remplace(matrice m, int x, int y, int c)}{remplace(matrice m, int x, int y, int c)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf matrice} remplace (
+\begin{DoxyParamCaption}
+\item[{{\bf matrice}}]{m, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}\hypertarget{lota_8c_a74c1bcfcd27e81b0c9c3f4c7ff0ade4f}{}\label{lota_8c_a74c1bcfcd27e81b0c9c3f4c7ff0ade4f}
+
+
+remplace la valeur de coordonnées (x,y) dans le tableau de la matrice m par la valeur c 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & \+: matrice valide \\
+\hline
+{\em x} & \+: entier représentant la ligne du tableau de la matrice \\
+\hline
+{\em y} & \+: entier représentant la colonne du tableau de la matrice \\
+\hline
+{\em c} & \+: entier représentant la couleur qui va apparaitre dans la matrice (entre 1 et 6) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+la matrice modifiée 
+\end{DoxyReturn}
+
+
+Definition at line 246 of file lota.\+c.
+
+\index{lota.\+c@{lota.\+c}!vide\+\_\+buffer@{vide\+\_\+buffer}}
+\index{vide\+\_\+buffer@{vide\+\_\+buffer}!lota.\+c@{lota.\+c}}
+\subsubsection[{\texorpdfstring{vide\+\_\+buffer()}{vide_buffer()}}]{\setlength{\rightskip}{0pt plus 5cm}void vide\+\_\+buffer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{lota_8c_a4c1a9f46471d06895b11012baa6b02ea}{}\label{lota_8c_a4c1a9f46471d06895b11012baa6b02ea}
+
+
+vide le buffer utilisé lors de la question get\+\_\+carac 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+Definition at line 61 of file lota.\+c.
+
